@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    psql:
+      jdbc-url: jdbc:postgresql://localhost:5432/testdb?stringtype=unspecified
+      username: postgres
+      password: 123
+      driver-class-name: org.postgresql.Driver
+    cvac:
+      jdbc-url: jdbc:sqlite:D:\zhuomian\tianditu\cva_c.mbtiles
+      driver-class-name: org.sqlite.JDBC
+    imgc:
+      jdbc-url: jdbc:sqlite:D:\zhuomian\tianditu\img_c.mbtiles
+      driver-class-name: org.sqlite.JDBC
+    osm:
+      jdbc-url: jdbc:sqlite:D:\zhuomian\osm\2020-10-planet-14.mbtiles
+      driver-class-name: org.sqlite.JDBC

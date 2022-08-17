@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="njnu.edu.back.dao.cvac.CvacTilesMapper">
+    <select id="selectTile" resultType="java.lang.Object">
+        select tile_data from tiles where tile_column = #{x} and tile_row = #{y} and zoom_level = #{z};
+    </select>
+</mapper>
