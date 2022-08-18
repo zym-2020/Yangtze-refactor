@@ -1,6 +1,6 @@
 package njnu.edu.back.service.impl;
 
-import njnu.edu.back.common.util.TileUtil;
+import njnu.edu.back.common.utils.TileUtil;
 import njnu.edu.back.dao.psql.PsqlTilesMapper;
 import njnu.edu.back.pojo.support.TileBox;
 import njnu.edu.back.service.PsqlTilesService;

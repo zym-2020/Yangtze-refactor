@@ -1,4 +1,4 @@
-package njnu.edu.back.common.util;
+package njnu.edu.back.common.utils;
 
 import njnu.edu.back.pojo.support.TileBox;
 

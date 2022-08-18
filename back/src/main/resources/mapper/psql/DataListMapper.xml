@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="njnu.edu.back.dao.psql.DataListMapper">
+    <select id="selectAll" resultType="java.util.Map">
+        select id, name, st_astext(location) as location, description, tags, creator, create_time as "createTime", update_time as "updateTime", download, watch, avatar, status,
+               provider, time, range, type, provider_phone as "providerPhone", provider_email as "providerEmail", provider_address as "providerAddress", get_online as "getOnline", detail
+        from data_list;
+    </select>
+
+    <select id="fuzzyQuery" resultType="java.util.Map">
+        select id, name, st_astext(location) as location, description, tags, creator, create_time as "createTime", update_time as "updateTime", download, watch, avatar, status,
+               provider, time, range, type, provider_phone as "providerPhone", provider_email as "providerEmail", provider_address as "providerAddress", get_online as "getOnline", detail
+        from data_list
+        where status = 1
+        <if test="keyword != ''">
+            and name like #{keyword}
+        </if>
+        <if test="tags.length > 0">
+            and tags @> #{tags, typeHandler = njnu.edu.back.common.utils.ArrayTypeHandler}::text[]
+        </if>
+        <if test="flag">
+            order by ${property} asc
+            limit #{size} offset #{start};
+        </if>
+        <if test="!flag">
+            order by ${property} desc
+            limit #{size} offset #{start};
+        </if>
+    </select>
+
+    <select id="countFuzzyQuery" resultType="java.lang.Integer">
+        select count(*) from data_list
+        where status = 1
+        <if test="keyword != ''">
+            and name like #{keyword}
+        </if>
+        <if test="tags.length > 0">
+            and tags @> #{tags, typeHandler = njnu.edu.back.common.utils.ArrayTypeHandler}::text[]
+        </if>
+    </select>
+</mapper>
